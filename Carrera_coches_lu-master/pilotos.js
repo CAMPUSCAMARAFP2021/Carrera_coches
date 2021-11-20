@@ -1,4 +1,4 @@
-class pilotos {
+class pilotos extends cars{
 
     constructor (nombre, vehiculo){
         this.nombre = nombre;

@@ -1,8 +1,11 @@
+var vehiculo = vehiculo;
+
 class cars extends vehiculo {
 
-   
-    constructor(name,  ) {
-    super() 
+    constructor(name, combustible) {
+    super(this.speed,this.speed_max, this.acceleration, this.braking); 
+    this.name = name;
+    this.combustible = combustible;
     }
     
 
