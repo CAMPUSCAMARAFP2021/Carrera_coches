@@ -7,7 +7,37 @@ function agregarSelect() {
   document.getElementById('target').innerHTML = select;
 }
 
-var tittle = document.createElement("button").onclick =race1.start ;
-tittle.innerHTML = 'Empezar la carrera';
-tittle.onclick = race1.start()
-document.body.appendChild(tittle);
+function darfuncionButton(){
+ var button = document.getElementById('game') 
+ button.onclick(race1.start())
+}
+
+function started (){
+race1.start()
+myAsyncFunction();
+
+}
+function delay(n){
+  return new Promise(function(resolve){
+      setTimeout(resolve,n*1000);
+  });
+}
+async function myAsyncFunction(){
+
+  var tittleWait = document.createElement("h2");
+  tittleWait.innerHTML = "Esta transcurriendo la carrera, pronto sabremos los resultados";
+  document.body.appendChild(tittleWait);
+
+  await delay(5);
+
+  var tittle2 = document.createElement("p");
+  tittle2.innerHTML = "EL podio es:";
+  document.body.appendChild(tittle2);
+
+  race1.results.map((results) => {
+   var finalresults = document.createElement("p");
+   finalresults.innerHTML = results;
+   document.body.appendChild(finalresults);
+})
+ 
+};
