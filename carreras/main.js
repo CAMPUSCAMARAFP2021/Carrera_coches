@@ -1,5 +1,4 @@
 
-
 class car {
     speed = 0;
     speedMax;
@@ -18,7 +17,6 @@ class car {
 
     }
 
-    //Poner velocidad max
     accelerate() {
         this.speed = this.speed + this.acc;
         if (this.speedMax <= this.speed) { this.speed = this.speedMax }
@@ -47,31 +45,22 @@ class car {
         }
     }
 }
-class player extends car {
 
-    constructor(name) {
-        super()
-        this.name = name;
-    }
-    chooseVehicle() {
-
-    }
-}
 
 class Circuito {
     name;
-    recorrido = ['r', 'c', 'r', 'c', 'r', 'c', 'r'];
+    route = ['r', 'c', 'r', 'c', 'r', 'c', 'r'];
 
     constructor(name) {
         this.name = name;
     }
     getStetch(distance) {
-        return this.recorrido[distance % 100 - distance % 100 % this.recorrido.length]
+        return this.route[distance % 100 - distance % 100 % this.route.length]
     }
 }
 class Race {
 
-    circuito = new Circuito("papa")
+    cirtuit = new Circuit("papa")
     distance;
     instant = 0;
     cars = [new car("Ferrari", 100, 10, 2), new car('Bmv', 100, 8, 5)];
@@ -79,15 +68,15 @@ class Race {
     partialResults = [];
 
 
-    constructor(distance, vueltas) {
-        this.vueltas = vueltas;
+    constructor(distance, lap) {
+        this.laps = lap;
         this.distance = distance;
     }
 
 
 
     carController(car) {
-        const stetch = this.circuito.getStetch(car.distance);
+        const stetch = this.cirtuit.getStetch(car.distance);
         stetch === 'r' ? car.accelerate() : car.accelerate();
 
     }
@@ -106,13 +95,13 @@ class Race {
     
     start() {
         let timer = setInterval(() => {
-            const distancia = this.distance * this.vueltas;
+            const distance = this.distance * this.laps;
             this.instant++;
             this.cars.map(this.carController.bind(this))
 
             this.cars.map((car) => {
 
-                if (car.distance >= distancia) {
+                if (car.distance >= distance) {
                     if (this.results.includes(car.name) === false) {
                         this.results.push(car.name)
                     }

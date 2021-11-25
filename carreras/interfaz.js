@@ -7,22 +7,24 @@ function agregarSelect() {
   document.getElementById('target').innerHTML = select;
 }
 
-function darfuncionButton(){
- var button = document.getElementById('game') 
- button.onclick(race1.start())
+function darfuncionButton() {
+  var button = document.getElementById('game')
+  button.onclick(race1.start())
 }
 
-function started (){
-race1.start()
-myAsyncFunction();
+function started() {
+  race1.start()
+  waitTimeandResults();
 
 }
-function delay(n){
-  return new Promise(function(resolve){
-      setTimeout(resolve,n*1000);
+
+function delay(n) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, n * 1000);
   });
 }
-async function myAsyncFunction(){
+
+async function waitTimeandResults() {
 
   var tittleWait = document.createElement("h2");
   tittleWait.innerHTML = "Esta transcurriendo la carrera, pronto sabremos los resultados";
@@ -35,9 +37,9 @@ async function myAsyncFunction(){
   document.body.appendChild(tittle2);
 
   race1.results.map((results) => {
-   var finalresults = document.createElement("p");
-   finalresults.innerHTML = results;
-   document.body.appendChild(finalresults);
-})
- 
+    var finalresults = document.createElement("p");
+    finalresults.innerHTML = results;
+    document.body.appendChild(finalresults);
+  })
+
 };
