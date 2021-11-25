@@ -47,7 +47,7 @@ class car {
 }
 
 
-class Circuito {
+class Circuit {
     name;
     route = ['r', 'c', 'r', 'c', 'r', 'c', 'r'];
 
