@@ -1,3 +1,5 @@
+
+
 class car {
     speed = 0;
     speedMax;
@@ -13,7 +15,6 @@ class car {
         this.speed = this.speed;
         this.distance = this.distance;
         this.brake = brake;
-        
 
     }
 
@@ -46,6 +47,16 @@ class car {
         }
     }
 }
+class player extends car {
+    
+    constructor (name){
+        super()
+        this.name = name;
+    }
+    chooseVehicle(){
+
+    }
+}
 
 class Circuito {
     name;
@@ -63,7 +74,7 @@ class Race {
     circuito = new Circuito("papa")
     distance;
     instant = 0;
-    cars = [new car("Ferrari", 100, 7, 2), new car('Bmv', 100, 8, 5)];
+    cars = [new car("Ferrari", 100, 8, 2), new car('Bmv', 100, 8, 5)];
     results = [];
 
     constructor(distance, vueltas) {
@@ -92,12 +103,19 @@ class Race {
 
 
                 if (car.distance >= distancia) {
-                    this.results.push(car.name)
+                   if (this.results.includes(car.name) === false) {
+                       this.results.push(car.name)
+                   } 
 
+                   
+                    this.results.map((results) => {console.log(results)})
 
-                    console.log(`El ganador es: ${this.results} con un tiempo de ${this.instant}s`)
-                    console.log(this.results)
-                    clearInterval(timer);
+                    
+                    if (this.cars.length === this.results.length) {
+                       clearInterval(timer); 
+                    
+                    }
+                    
                 }
             })
 
